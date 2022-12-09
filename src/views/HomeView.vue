@@ -1,18 +1,48 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <EmployeesList
+      :employees="employees"
+      @addEmployee="addEmployee"
+      @deleteEmployee="deleteEmployee"
+    />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import EmployeesList from "@/components/EmployeesList.vue";
 
 export default {
-  name: 'HomeView',
+  name: "HomeView",
+  data() {
+    return {
+      employees: [
+        {
+          name: "Albert",
+          age: 30,
+          email: "albert@gmail.com",
+          id: 1,
+        },
+        {
+          name: "Daniel",
+          age: 45,
+          email: "daniel@gmail.com",
+          id: 2,
+        },
+      ],
+    };
+  },
+  methods: {
+    addEmployee(obj) {
+      console.log("obj", obj);
+      this.employees.push(obj);
+    },
+    deleteEmployee(id) {
+      this.employees = this.employees.filter((emp) => emp.id !== id);
+    },
+  },
   components: {
-    HelloWorld
-  }
-}
+    EmployeesList,
+  },
+};
 </script>

@@ -1,0 +1,55 @@
+.employees-list {
+  max-width: 300px;
+  padding: 15px;
+  margin: auto;
+  box-sizing: content-box;
+}
+input {
+  display: inline-block;
+  width: 100%;
+  padding: 7px;
+  margin-bottom: 10px;
+}
+.search-box {
+  width: 300px;
+}
+.add-btn {
+  min-width: 200px;
+  padding: 10px;
+  font-weight: bold;
+  margin: 0 auto 30px;
+  cursor: pointer;
+}
+.form-control label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.employees-table {
+  border: 1px solid #000;
+  border-spacing: 0;
+}
+th,
+td {
+  padding: 5px;
+  border: 1px solid #a3a3a3;
+}
+.delete {
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.highlight .delete {
+  color: red;
+}
+.highlight td {
+  border: 1px solid red;
+}
+.add-btn:disabled,
+.delete:disabled {
+  cursor: not-allowed;
+}
+.text-center {
+  text-align: center;
+  text-decoration: underline;
+}
