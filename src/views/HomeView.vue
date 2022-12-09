@@ -28,21 +28,20 @@ export default {
           age: 45,
           email: "daniel@gmail.com",
           id: 2,
-        },
-      ],
+        }
+      ]
     };
   },
   methods: {
-    addEmployee(obj) {
-      console.log("obj", obj);
-      this.employees.push(obj);
+    addEmployee(employee) {
+      this.employees.push(employee);
     },
     deleteEmployee(id) {
       this.employees = this.employees.filter((emp) => emp.id !== id);
-    },
+    }
   },
   components: {
-    EmployeesList,
-  },
+    EmployeesList
+  }
 };
 </script>

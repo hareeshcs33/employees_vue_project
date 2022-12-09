@@ -29,7 +29,6 @@
       class="search-box"
       v-model="searchEmployee"
       placeholder="Search Employee Name ..."
-      @input="searchEmployeeValue"
     />
     <table class="employees-table" v-if="this.filteredEmployeeList.length">
       <thead>
@@ -70,7 +69,9 @@
 export default {
   name: "EmployeesList",
   props: {
-    employees: Array,
+    employees: {
+      type: Array
+    }
   },
   data() {
     return {
@@ -78,12 +79,12 @@ export default {
       name: "",
       age: "",
       email: "",
-      selectedEmployeeId: null,
-    };
+      selectedEmployeeId: null
+    }
   },
   computed: {
     filteredEmployeeList() {
-      return this.employees.filter(
+      return this.employees?.filter(
         (emp) => !emp.name.toLowerCase().indexOf(this.searchEmployee)
       );
     },
@@ -94,11 +95,13 @@ export default {
         !/^[^@]+@\w+(\.\w+)+\w$/.test(this.email)
         ? false
         : true;
-    },
+    }
   },
   methods: {
-    searchEmployeeValue() {
-      console.log(this.searchEmployee);
+    resetEmployee() {
+      this.name = "";
+      this.age = "";
+      this.email = "";
     },
     AddEmployee() {
       if (!this.validateEmployeeData) {
@@ -108,11 +111,9 @@ export default {
           name: this.name,
           age: this.age,
           email: this.email,
-          id: Date.now(),
+          id: Date.now()
         });
-        this.name = "";
-        this.age = "";
-        this.email = "";
+        this.resetEmployee();
       }
     },
     selectEmployee(id) {
@@ -120,8 +121,8 @@ export default {
     },
     deleteEmployee(id) {
       this.$emit("deleteEmployee", id);
-    },
-  },
+    }
+  }
 };
 </script>
 
